@@ -1,1 +1,376 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Network Logger • UI Mockup</title>
+  <style>
+    :root {
+      --blue-600: #2563eb;
+      --blue-700: #1d4ed8;
+      --blue-50:  #eff6ff;
+      --gray-900: #111827;
+      --gray-800: #1f2937;
+      --gray-700: #374151;
+      --gray-600: #4b5563;
+      --gray-500: #6b7280;
+      --gray-300: #d1d5db;
+      --gray-200: #e5e7eb;
+      --gray-100: #f3f4f6;
+      --white: #ffffff;
+      --bg: var(--gray-100);
+      --card: #ffffff;
+      --ring: rgba(37, 99, 235, 0.15);
+      --shadow: 0 10px 20px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--gray-900);
+    }
+
+    /* Layout */
+    .app {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 260px 1fr;
+      grid-template-areas: "header header" "sidebar main";
+      min-height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background: linear-gradient(90deg, var(--blue-700), var(--blue-600));
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      box-shadow: var(--shadow);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .brand svg { height: 36px; width: 36px; }
+    .brand h1 { font-size: 1.1rem; margin: 0; letter-spacing: 0.3px; font-weight: 700; }
+
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+    .btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .05s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--white); color: var(--blue-700); }
+    .btn-ghost { background: transparent; color: #e0ecff; border-color: rgba(255,255,255,0.35); }
+    .btn-primary:hover { box-shadow: var(--shadow); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+    aside {
+      grid-area: sidebar;
+      background: var(--white);
+      border-right: 1px solid var(--gray-200);
+      padding: 18px 14px;
+    }
+    .nav { display: grid; gap: 6px; }
+    .nav h3 { color: var(--gray-600); font-size: .85rem; margin: 10px 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+    .nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-radius: 10px; color: var(--gray-800);
+      text-decoration: none; font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .nav a:hover { background: var(--gray-100); border-color: var(--gray-200); }
+    .nav a.active { background: var(--blue-50); color: var(--blue-700); border-color: #c7dbff; }
+    .pill { margin-left: auto; background: var(--gray-200); color: var(--gray-700); font-size: .75rem; padding: 2px 8px; border-radius: 999px; }
+
+    main {
+      grid-area: main; padding: 24px; display: grid; gap: 16px; align-content: start;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .card header { position: static; background: none; color: inherit; box-shadow: none; padding: 16px 16px 0; }
+    .card h2 { margin: 0; font-size: 1rem; color: var(--gray-800); }
+    .card .body { padding: 12px 16px 16px; }
+
+    .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .field { display: grid; gap: 6px; }
+    .label { font-size: .85rem; color: var(--gray-600); font-weight: 700; }
+
+    .input, select {
+      border: 1px solid var(--gray-300);
+      border-radius: 10px;
+      padding: 9px 12px;
+      background: var(--white);
+      color: var(--gray-900);
+      outline: none;
+      transition: box-shadow .2s ease, border-color .2s ease;
+    }
+    .input:focus, select:focus { border-color: var(--blue-600); box-shadow: 0 0 0 4px var(--ring); }
+
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--gray-200); }
+    th { color: var(--gray-600); font-weight: 700; background: var(--gray-100); position: sticky; top: 0; z-index: 1; }
+    tbody tr:hover { background: #f8fbff; }
+
+    .muted { color: var(--gray-600); }
+    .badge { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 700; padding: 4px 8px; border-radius: 999px; border: 1px solid var(--gray-300); color: var(--gray-700); }
+    .badge.live { color: var(--blue-700); border-color: #c7dbff; background: var(--blue-50); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gray-500); }
+    .dot.live { background: var(--blue-600); box-shadow: 0 0 0 6px var(--ring); }
+
+    .console {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+      background: #0b1220;
+      color: #e2e8f0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      min-height: 180px;
+      overflow: auto;
+      border: 1px solid #0e1a33;
+    }
+    .console .line { opacity: .9; }
+    .console .ts { color: #94a3b8; margin-right: 8px; }
+    .console .cmd { color: #60a5fa; }
+
+    .hint { font-size: .85rem; color: var(--gray-600); }
+    .divider { height: 1px; background: var(--gray-200); margin: 10px 0; }
+
+    .footer-note { text-align: center; color: var(--gray-600); font-size: .85rem; padding: 10px 0 30px; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .app { grid-template-columns: 1fr; grid-template-areas: "header" "main"; }
+      aside { display: none; }
+      .col-6, .col-8, .col-4 { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand" aria-label="Network Logger brand">
+        <!-- Orca Logo (inline SVG) -->
+        <svg viewBox="0 0 64 64" role="img" aria-label="Orca logo" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="orcaGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e2e8f0"/>
+              <stop offset="100%" stop-color="#94a3b8"/>
+            </linearGradient>
+          </defs>
+          <!-- Simple stylized orca -->
+          <path d="M6 34c4-10 18-18 30-18 8 0 16 4 20 10 2 3 2 6-1 7-3 1-7-2-9-4-4-3-6-3-10-1-3 2-4 4-2 6 2 1 5 1 8 1 6 0 10 2 10 5 0 4-7 8-19 8C19 48 9 43 6 34Z" fill="#0f172a"/>
+          <path d="M36 22c-5 0-8 3-8 6 0 2 2 4 6 4 6 0 10 2 12 5 0-3-3-5-9-5-3 0-4-1-4-2 0-3 3-6 7-6h-4Z" fill="url(#orcaGrad)"/>
+          <circle cx="42" cy="23" r="2" fill="#e2e8f0"/>
+        </svg>
+        <h1>Network Logger</h1>
+        <span class="badge live" title="Backend pending; UI only"><span class="dot live"></span> UI Mockup</span>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-ghost" aria-label="Open help">Help</button>
+        <button class="btn btn-primary" aria-label="Export">Export</button>
+      </div>
+    </header>
+
+    <aside>
+      <nav class="nav" aria-label="Sidebar navigation">
+        <h3>Navigation</h3>
+        <a href="#" class="active">Dashboard</a>
+        <a href="#">Live Capture <span class="pill">coming soon</span></a>
+        <a href="#">Logs</a>
+        <a href="#">Settings</a>
+        <a href="#">About</a>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="grid" aria-label="Top controls">
+        <div class="card col-8">
+          <header><h2>Capture Controls</h2></header>
+          <div class="body">
+            <div class="toolbar" role="group" aria-label="Capture actions">
+              <button class="btn btn-primary" disabled title="Backend not wired yet">Start Logging</button>
+              <button class="btn" disabled title="Backend not wired yet">Stop</button>
+              <div class="divider" style="width:1px; height:36px"></div>
+              <div class="field">
+                <label class="label" for="iface">Interface</label>
+                <select id="iface" name="iface" disabled>
+                  <option>auto (pending)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="label" for="filter">Filter</label>
+                <input id="filter" class="input" placeholder="e.g., tcp or port 443" disabled />
+              </div>
+              <div class="field">
+                <label class="label" for="duration">Duration</label>
+                <select id="duration" disabled>
+                  <option>Indefinite</option>
+                  <option>30s</option>
+                  <option>2m</option>
+                  <option>5m</option>
+                </select>
+              </div>
+            </div>
+            <p class="hint">This UI is front‑end only. Hook these controls to your logger when the backend is ready.</p>
+          </div>
+        </div>
+        <div class="card col-4">
+          <header><h2>Status</h2></header>
+          <div class="body">
+            <div class="toolbar">
+              <span class="badge"><span class="dot"></span> idle</span>
+              <span class="muted">Last run:</span>
+              <strong id="last-run">—</strong>
+            </div>
+            <div style="margin-top:10px; display:grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div class="field"><span class="label">Host</span><div id="host-val">example-host</div></div>
+              <div class="field"><span class="label">Timezone</span><div id="tz-val">UTC</div></div>
+              <div class="field"><span class="label">Output</span><div id="out-val">/path/to/network_logs</div></div>
+              <div class="field"><span class="label">Retention</span><div>7 days</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Data panels">
+        <div class="card col-12">
+          <header><h2>Active Connections (sample data)</h2></header>
+          <div class="body" style="max-height: 320px; overflow:auto;">
+            <table aria-describedby="table-desc">
+              <caption id="table-desc" class="sr-only">Connections table (placeholder rows)</caption>
+              <thead>
+                <tr>
+                  <th>Proto</th>
+                  <th>Local Address</th>
+                  <th>Remote Address</th>
+                  <th>State</th>
+                  <th>PID</th>
+                  <th>Process</th>
+                </tr>
+              </thead>
+              <tbody id="conn-body">
+                <!-- Placeholder rows injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <header><h2>Open Ports (sample)</h2></header>
+          <div class="body" style="max-height: 260px; overflow:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Port</th>
+                  <th>Proto</th>
+                  <th>Process</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>22</td><td>tcp</td><td>sshd</td><td class="muted">listening</td></tr>
+                <tr><td>53</td><td>udp</td><td>systemd-resolved</td><td class="muted">DNS</td></tr>
+                <tr><td>80</td><td>tcp</td><td>nginx</td><td class="muted">http</td></tr>
+                <tr><td>443</td><td>tcp</td><td>nginx</td><td class="muted">https</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <header><h2>Interfaces (sample)</h2></header>
+          <div class="body" style="max-height: 260px; overflow:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Interface</th>
+                  <th>IPv4</th>
+                  <th>IPv6</th>
+                  <th>RX (bytes)</th>
+                  <th>TX (bytes)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>lo</td><td>127.0.0.1</td><td>::1</td><td>123456</td><td>123456</td></tr>
+                <tr><td>eth0</td><td>192.168.1.10</td><td>fe80::1</td><td>987654321</td><td>876543210</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card col-12">
+          <header><h2>Log Output (UI only)</h2></header>
+          <div class="body">
+            <div class="console" id="console" aria-live="polite" aria-label="Console output">
+              <!-- Lines injected by JS -->
+            </div>
+            <p class="hint">These messages are simulated to show how the console area will look during real logging.</p>
+          </div>
+        </div>
+      </section>
+
+      <p class="footer-note">© <span id="year"></span> Network Logger • Blue & Grey theme • Orca logo included</p>
+    </main>
+  </div>
+
+  <script>
+    // Lightweight filler to make the mockup feel alive (no backend calls)
+    const connSamples = [
+      { proto: 'tcp', l: '127.0.0.1:5432', r: '127.0.0.1:53124', s: 'ESTABLISHED', pid: 1843, p: 'postgres' },
+      { proto: 'tcp', l: '0.0.0.0:22', r: '0.0.0.0:*', s: 'LISTEN', pid: 789, p: 'sshd' },
+      { proto: 'udp', l: '192.168.1.10:68', r: '192.168.1.1:67', s: '—', pid: 514, p: 'dhclient' },
+      { proto: 'tcp', l: '192.168.1.10:443', r: '93.184.216.34:51234', s: 'ESTABLISHED', pid: 2250, p: 'nginx' }
+    ];
+    const tbody = document.getElementById('conn-body');
+    connSamples.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${row.proto}</td><td>${row.l}</td><td>${row.r}</td><td>${row.s}</td><td>${row.pid}</td><td>${row.p}</td>`;
+      tbody.appendChild(tr);
+    });
+
+    const lines = [
+      ['init', 'UI loaded'],
+      ['info', 'Backend not connected; controls disabled'],
+      ['hint', 'Wire Start/Stop to your logger once API is ready'],
+    ];
+    const con = document.getElementById('console');
+    const now = () => new Date().toISOString();
+    lines.forEach(([tag, msg]) => {
+      const div = document.createElement('div');
+      div.className = 'line';
+      div.innerHTML = `<span class="ts">${now()}</span><span class="cmd">[${tag}]</span> ${msg}`;
+      con.appendChild(div);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Populate status panel with client-derived examples
+    document.getElementById('last-run').textContent = '—';
+    document.getElementById('host-val').textContent = window.location.hostname || 'localhost';
+    document.getElementById('tz-val').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+  </script>
+</body>
+</html>
