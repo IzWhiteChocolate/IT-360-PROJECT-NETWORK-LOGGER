@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+  </head>
+
+  <body>
+    <p>Please enter your credentials here</p>
+
+    <form id="loginForm">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required><br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br><br>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p id="message"></p>
+
+   <script>
+  const form = document.getElementById("loginForm");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); // stop form from refreshing
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Replace with your chosen test credentials
+    if (email === "email" && password === "password") {
+      message.textContent = "Login successful! Redirecting...";
+      message.style.color = "green";
+
+      // Redirect properly using JavaScript
+      window.location.href = "Chat.html"; //
+    } else {
+      message.textContent = "Invalid email or password.";
+      message.style.color = "red";
+    }
+  });
+</script>
+
+  </body>
+</html>
