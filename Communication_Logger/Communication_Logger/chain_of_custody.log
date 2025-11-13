@@ -1,0 +1,261 @@
+-------------------------------------------
+[INFO] Communication Logger Started: Fri Nov  7 22:34:03 CST 2025
+[INFO] Watching directory: ./queue/inbox
+-------------------------------------------
+[2025-11-07 22:34:03] [INFO] Processing new message: ./queue/inbox/test1.txt
+[2025-11-07 22:34:03] [SUCCESS] Encrypted message stored at: ./messages/msg_1762576443-10522.enc
+[2025-11-07 22:34:03] [INFO] Removed plaintext file: ./queue/inbox/test1.txt
+[2025-11-07 22:34:03] [INFO] --- Network State ---
+  Interface: lo0 → MAC: unknown
+  Interface: gif0 → MAC: unknown
+  Interface: stf0 → MAC: unknown
+  Interface: anpi0 → MAC: b6:c4:9d:09:ea:60
+  Interface: anpi1 → MAC: b6:c4:9d:09:ea:61
+  Interface: en3 → MAC: b6:c4:9d:09:ea:40
+  Interface: en5 → MAC: b6:c4:9d:09:ea:41
+  Interface: en1 → MAC: 36:b7:25:23:02:40
+  Interface: en2 → MAC: 36:b7:25:23:02:44
+  Interface: bridge0 → MAC: 36:b7:25:23:02:40
+  Interface: utun0 → MAC: unknown
+  Interface: utun1 → MAC: unknown
+  Interface: utun2 → MAC: unknown
+  Interface: utun3 → MAC: unknown
+  Interface: ap1 → MAC: 76:f9:24:41:17:9f
+  Interface: en0 → MAC: 66:99:f8:ee:e7:9e
+  Interface: awdl0 → MAC: 86:56:ed:79:59:e7
+  Interface: llw0 → MAC: 86:56:ed:79:59:e7
+  Interface: utun4 → MAC: unknown
+  Interface: utun5 → MAC: unknown
+  Interface: en4 → MAC: 00:05:1b:8f:dc:d5
+[2025-11-07 22:34:21] [INFO] Processing new message: ./queue/inbox/test1.txt
+[2025-11-07 22:34:21] [SUCCESS] Encrypted message stored at: ./messages/msg_1762576461-16201.enc
+[2025-11-07 22:34:21] [INFO] Removed plaintext file: ./queue/inbox/test1.txt
+[2025-11-07 22:34:21] [INFO] --- Network State ---
+  Interface: lo0 → MAC: unknown
+  Interface: gif0 → MAC: unknown
+  Interface: stf0 → MAC: unknown
+  Interface: anpi0 → MAC: b6:c4:9d:09:ea:60
+  Interface: anpi1 → MAC: b6:c4:9d:09:ea:61
+  Interface: en3 → MAC: b6:c4:9d:09:ea:40
+  Interface: en5 → MAC: b6:c4:9d:09:ea:41
+  Interface: en1 → MAC: 36:b7:25:23:02:40
+  Interface: en2 → MAC: 36:b7:25:23:02:44
+  Interface: bridge0 → MAC: 36:b7:25:23:02:40
+  Interface: utun0 → MAC: unknown
+  Interface: utun1 → MAC: unknown
+  Interface: utun2 → MAC: unknown
+  Interface: utun3 → MAC: unknown
+  Interface: ap1 → MAC: 76:f9:24:41:17:9f
+  Interface: en0 → MAC: 66:99:f8:ee:e7:9e
+  Interface: awdl0 → MAC: 86:56:ed:79:59:e7
+  Interface: llw0 → MAC: 86:56:ed:79:59:e7
+  Interface: utun4 → MAC: unknown
+  Interface: utun5 → MAC: unknown
+  Interface: en4 → MAC: 00:05:1b:8f:dc:d5
+-------------------------------------------
+[INFO] Communication Logger Started: Fri Nov  7 22:38:33 CST 2025
+[INFO] Watching directory: ./queue/inbox
+-------------------------------------------
+[2025-11-07 22:39:29] [INFO] Processing new message: ./queue/inbox/demo1.txt
+[2025-11-07 22:39:29] [SUCCESS] Encrypted message stored at: ./messages/msg_1762576769-14447.enc
+[2025-11-07 22:39:29] [INFO] Removed plaintext file: ./queue/inbox/demo1.txt
+[2025-11-07 22:39:29] [INFO] --- Network State ---
+  Interface: lo0 → MAC: unknown
+  Interface: gif0 → MAC: unknown
+  Interface: stf0 → MAC: unknown
+  Interface: anpi0 → MAC: b6:c4:9d:09:ea:60
+  Interface: anpi1 → MAC: b6:c4:9d:09:ea:61
+  Interface: en3 → MAC: b6:c4:9d:09:ea:40
+  Interface: en5 → MAC: b6:c4:9d:09:ea:41
+  Interface: en1 → MAC: 36:b7:25:23:02:40
+  Interface: en2 → MAC: 36:b7:25:23:02:44
+  Interface: bridge0 → MAC: 36:b7:25:23:02:40
+  Interface: utun0 → MAC: unknown
+  Interface: utun1 → MAC: unknown
+  Interface: utun2 → MAC: unknown
+  Interface: utun3 → MAC: unknown
+  Interface: ap1 → MAC: 76:f9:24:41:17:9f
+  Interface: en0 → MAC: 66:99:f8:ee:e7:9e
+  Interface: awdl0 → MAC: 86:56:ed:79:59:e7
+  Interface: llw0 → MAC: 86:56:ed:79:59:e7
+  Interface: utun4 → MAC: unknown
+  Interface: utun5 → MAC: unknown
+  Interface: en4 → MAC: 00:05:1b:8f:dc:d5
+------------------------------------------------------------
+[INFO] Communication Logger (Plaintext Demo) Started: Fri Nov  7 22:41:26 CST 2025
+[INFO] Watching directory: ./queue/inbox
+------------------------------------------------------------
+
+[2025-11-07 22:41:38] [INFO] 📨 New Message Detected: ./queue/inbox/demo1.txt
+------------------------------------------------------------
+[2025-11-07 22:41:38] [SUCCESS] Stored plaintext message at: ./messages/msg_1762576898-22664.txt
+
+[2025-11-07 22:41:38] [INFO] 📄 Message Content:
+------------------------------------------------------------
+    This is a plaintext test message from The king Himself
+------------------------------------------------------------
+
+[2025-11-07 22:41:38] [INFO] 🔒 SHA-256 Hash Verification
+f890e72adf4701017139e8fcb18f4fd93d266033d53e4c465d995b06b8b33983  ./messages/msg_1762576898-22664.txt
+
+[2025-11-07 22:41:38] [INFO] 🧹 Removed message from inbox: ./queue/inbox/demo1.txt
+
+[2025-11-07 22:41:38] [INFO] 🌐 Network Snapshot
+------------------------------------------------------------
+  lo0        →  MAC: unknown           | IP: 127.0.0.1
+  gif0       →  MAC: unknown           | IP: N/A
+  stf0       →  MAC: unknown           | IP: N/A
+  anpi0      →  MAC: b6:c4:9d:09:ea:60 | IP: N/A
+  anpi1      →  MAC: b6:c4:9d:09:ea:61 | IP: N/A
+  en3        →  MAC: b6:c4:9d:09:ea:40 | IP: N/A
+  en5        →  MAC: b6:c4:9d:09:ea:41 | IP: N/A
+  en1        →  MAC: 36:b7:25:23:02:40 | IP: N/A
+  en2        →  MAC: 36:b7:25:23:02:44 | IP: N/A
+  bridge0    →  MAC: 36:b7:25:23:02:40 | IP: N/A
+  utun0      →  MAC: unknown           | IP: N/A
+  utun1      →  MAC: unknown           | IP: N/A
+  utun2      →  MAC: unknown           | IP: N/A
+  utun3      →  MAC: unknown           | IP: N/A
+  ap1        →  MAC: 76:f9:24:41:17:9f | IP: N/A
+  en0        →  MAC: 66:99:f8:ee:e7:9e | IP: 192.168.7.149
+  awdl0      →  MAC: 86:56:ed:79:59:e7 | IP: N/A
+  llw0       →  MAC: 86:56:ed:79:59:e7 | IP: N/A
+  utun4      →  MAC: unknown           | IP: N/A
+  utun5      →  MAC: unknown           | IP: N/A
+  en4        →  MAC: 00:05:1b:8f:dc:d5 | IP: N/A
+------------------------------------------------------------
+------------------------------------------------------------
+[INFO] Communication Logger (Plaintext Demo) Started: Sat Nov  8 13:36:27 CST 2025
+[INFO] Watching directory: ./queue/inbox
+------------------------------------------------------------
+
+[2025-11-08 13:38:20] [INFO] 📨 New Message Detected: ./queue/inbox/test1.txt
+------------------------------------------------------------
+[2025-11-08 13:38:20] [SUCCESS] Stored plaintext message at: ./messages/msg_1762630700-21239.txt
+
+[2025-11-08 13:38:20] [INFO] 📄 Message Content:
+------------------------------------------------------------
+    This is a message from yours truly
+------------------------------------------------------------
+
+[2025-11-08 13:38:20] [INFO] 🔒 SHA-256 Hash Verification
+bda59b6686a213c2d68d8204acf3bb83f507dd0f7fd72c6bb274812c0dd4168a  ./messages/msg_1762630700-21239.txt
+
+[2025-11-08 13:38:20] [INFO] 🧹 Removed message from inbox: ./queue/inbox/test1.txt
+
+[2025-11-08 13:38:20] [INFO] 🌐 Network Snapshot
+------------------------------------------------------------
+  lo0        →  MAC: unknown           | IP: 127.0.0.1
+  gif0       →  MAC: unknown           | IP: N/A
+  stf0       →  MAC: unknown           | IP: N/A
+  anpi0      →  MAC: b6:c4:9d:09:ea:60 | IP: N/A
+  anpi1      →  MAC: b6:c4:9d:09:ea:61 | IP: N/A
+  en3        →  MAC: b6:c4:9d:09:ea:40 | IP: N/A
+  en5        →  MAC: b6:c4:9d:09:ea:41 | IP: N/A
+  en1        →  MAC: 36:b7:25:23:02:40 | IP: N/A
+  en2        →  MAC: 36:b7:25:23:02:44 | IP: N/A
+  bridge0    →  MAC: 36:b7:25:23:02:40 | IP: N/A
+  utun0      →  MAC: unknown           | IP: N/A
+  utun1      →  MAC: unknown           | IP: N/A
+  utun2      →  MAC: unknown           | IP: N/A
+  utun3      →  MAC: unknown           | IP: N/A
+  ap1        →  MAC: 76:f9:24:41:17:9f | IP: N/A
+  en0        →  MAC: 66:99:f8:ee:e7:9e | IP: 192.168.7.149
+  awdl0      →  MAC: 96:cb:91:fc:2d:f7 | IP: N/A
+  llw0       →  MAC: 96:cb:91:fc:2d:f7 | IP: N/A
+  utun4      →  MAC: unknown           | IP: N/A
+  utun5      →  MAC: unknown           | IP: N/A
+  utun6      →  MAC: unknown           | IP: 10.5.0.2
+  en4        →  MAC: 00:05:1b:8f:dc:d5 | IP: N/A
+------------------------------------------------------------
+------------------------------------------------------------
+[INFO] Communication Logger (Plaintext Demo) Started: Sat Nov  8 14:00:56 CST 2025
+[INFO] Watching directory: ./queue/inbox
+------------------------------------------------------------
+
+[2025-11-08 14:01:32] [INFO] 📨 New Message Detected: ./queue/inbox/test1.txt
+------------------------------------------------------------
+[2025-11-08 14:01:32] [SUCCESS] Stored plaintext message at: ./messages/msg_1762632092-749.txt
+
+[2025-11-08 14:01:32] [INFO] 📄 Message Content:
+------------------------------------------------------------
+    This is a test
+------------------------------------------------------------
+
+[2025-11-08 14:01:32] [INFO] 🔒 SHA-256 Hash Verification
+9d63c3b5b7623d1fa3dc7fd1547313b9546c6d0fbbb6773a420613b7a17995c8  ./messages/msg_1762632092-749.txt
+
+[2025-11-08 14:01:32] [INFO] 🧹 Removed message from inbox: ./queue/inbox/test1.txt
+
+[2025-11-08 14:01:32] [INFO] 🌐 Network Snapshot
+------------------------------------------------------------
+  lo0        →  MAC: unknown           | IP: 127.0.0.1
+  gif0       →  MAC: unknown           | IP: N/A
+  stf0       →  MAC: unknown           | IP: N/A
+  anpi0      →  MAC: b6:c4:9d:09:ea:60 | IP: N/A
+  anpi1      →  MAC: b6:c4:9d:09:ea:61 | IP: N/A
+  en3        →  MAC: b6:c4:9d:09:ea:40 | IP: N/A
+  en5        →  MAC: b6:c4:9d:09:ea:41 | IP: N/A
+  en1        →  MAC: 36:b7:25:23:02:40 | IP: N/A
+  en2        →  MAC: 36:b7:25:23:02:44 | IP: N/A
+  bridge0    →  MAC: 36:b7:25:23:02:40 | IP: N/A
+  utun0      →  MAC: unknown           | IP: N/A
+  utun1      →  MAC: unknown           | IP: N/A
+  utun2      →  MAC: unknown           | IP: N/A
+  utun3      →  MAC: unknown           | IP: N/A
+  ap1        →  MAC: 76:f9:24:41:17:9f | IP: N/A
+  en0        →  MAC: 66:99:f8:ee:e7:9e | IP: 192.168.7.149
+  awdl0      →  MAC: 06:0c:33:9c:4d:84 | IP: N/A
+  llw0       →  MAC: 06:0c:33:9c:4d:84 | IP: N/A
+  utun4      →  MAC: unknown           | IP: N/A
+  utun5      →  MAC: unknown           | IP: N/A
+  utun6      →  MAC: unknown           | IP: 10.5.0.2
+  en4        →  MAC: 00:05:1b:8f:dc:d5 | IP: N/A
+------------------------------------------------------------
+------------------------------------------------------------
+[INFO] Communication Logger (Plaintext Demo) Started: Sun Nov  9 23:11:15 CST 2025
+[INFO] Watching directory: ./queue/inbox
+------------------------------------------------------------
+
+[2025-11-09 23:11:59] [INFO] 📨 New Message Detected: ./queue/inbox/test3.txt
+------------------------------------------------------------
+[2025-11-09 23:11:59] [SUCCESS] Stored plaintext message at: ./messages/msg_1762751519-3225.txt
+
+[2025-11-09 23:11:59] [INFO] 📄 Message Content:
+------------------------------------------------------------
+     This is a test, im the shit
+------------------------------------------------------------
+
+[2025-11-09 23:11:59] [INFO] 🔒 SHA-256 Hash Verification
+b4e5d0d0bea9123e949f4d4bcd0094f92577cb60f347e4c3471e32bbc8f7667a  ./messages/msg_1762751519-3225.txt
+
+[2025-11-09 23:11:59] [INFO] 🧹 Removed message from inbox: ./queue/inbox/test3.txt
+
+[2025-11-09 23:11:59] [INFO] 🌐 Network Snapshot
+------------------------------------------------------------
+  lo0        →  MAC: unknown           | IP: 127.0.0.1
+  gif0       →  MAC: unknown           | IP: N/A
+  stf0       →  MAC: unknown           | IP: N/A
+  anpi0      →  MAC: b6:c4:9d:09:ea:60 | IP: N/A
+  anpi1      →  MAC: b6:c4:9d:09:ea:61 | IP: N/A
+  en3        →  MAC: b6:c4:9d:09:ea:40 | IP: N/A
+  en5        →  MAC: b6:c4:9d:09:ea:41 | IP: N/A
+  en1        →  MAC: 36:b7:25:23:02:40 | IP: N/A
+  en2        →  MAC: 36:b7:25:23:02:44 | IP: N/A
+  bridge0    →  MAC: 36:b7:25:23:02:40 | IP: N/A
+  utun0      →  MAC: unknown           | IP: N/A
+  utun1      →  MAC: unknown           | IP: N/A
+  utun2      →  MAC: unknown           | IP: N/A
+  utun3      →  MAC: unknown           | IP: N/A
+  ap1        →  MAC: 76:f9:24:41:17:9f | IP: N/A
+  en0        →  MAC: ae:4d:a8:3d:f1:0f | IP: 192.168.1.156
+  awdl0      →  MAC: 8e:ea:81:35:cf:63 | IP: N/A
+  llw0       →  MAC: 8e:ea:81:35:cf:63 | IP: N/A
+  utun4      →  MAC: unknown           | IP: N/A
+  utun5      →  MAC: unknown           | IP: N/A
+  utun6      →  MAC: unknown           | IP: 10.5.0.2
+------------------------------------------------------------
+------------------------------------------------------------
+[INFO] Communication Logger (Plaintext Demo) Started: Thu Nov 13 12:43:48 CST 2025
+[INFO] Watching directory: ./queue/inbox
+------------------------------------------------------------
