@@ -1,55 +1,99 @@
 const express = require('express');
 const http = require('http');
-const { Server } = require('socket.io');
-const path = require('path');
+const socket = require('socket.io');
+const crypto = require('crypto');
+const { execSync } = require('child_process');
+const fs = require('fs');
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = socket(server);
 
-app.use(express.static(path.join(__dirname))); // serve Chat.html, login.html, logo.png, etc.
+// Serve static files
+app.use(express.static(__dirname));
 
-// Default route → login.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
+// Default route → login page
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/login.html");
 });
 
-// store active users
-let activeUsers = new Map();
+// AES-256 KEY + IV
+const KEY = crypto.randomBytes(32);
+const IV = crypto.randomBytes(16);
 
-io.on('connection', (socket) => {
-  console.log('🛰️ A user connected');
+function encrypt(text) {
+    const cipher = crypto.createCipheriv("aes-256-cbc", KEY, IV);
+    return cipher.update(text, "utf8", "hex") + cipher.final("hex");
+}
 
-  // When a new user joins
-  socket.on('newUser', (username) => {
-    activeUsers.set(socket.id, username);
-    io.emit('updateUserList', Array.from(activeUsers.values()));
-  });
+function getMac() {
+    try {
+        const out = execSync("ip link | awk '/ether/ {print $2; exit}'")
+            .toString().trim();
+        return out || "unknown";
+    } catch {
+        return "unknown";
+    }
+}
 
-  // When a chat message is sent
-  socket.on('chatMessage', (msg) => {
-    const user = activeUsers.get(socket.id);
-    socket.broadcast.emit('chatMessage', { user, msg });
-  });
+// ACTIVE USER LIST
+let activeUsers = [];
 
-  // Typing event (broadcast to others)
-  socket.on('typing', (username) => {
-    socket.broadcast.emit('typing', username);
-  });
+io.on("connection", (socket) => {
+    console.log("User connected.");
 
-  // Stop typing event
-  socket.on('stopTyping', (username) => {
-    socket.broadcast.emit('stopTyping', username);
-  });
+    // --- USER JOINS ---
+    socket.on("newUser", (username) => {
+        socket.username = username;
 
-  // When a user disconnects
-  socket.on('disconnect', () => {
-    activeUsers.delete(socket.id);
-    io.emit('updateUserList', Array.from(activeUsers.values()));
-    console.log('❌ A user disconnected');
-  });
+        if (!activeUsers.includes(username)) {
+            activeUsers.push(username);
+        }
+
+        // Send updated list to all clients
+        io.emit("activeUsers", activeUsers);
+    });
+
+    // --- MESSAGE RECEIVED ---
+    // Chat messages
+socket.on("chatMessage", (msgData) => {
+    const { user, message } = msgData;
+
+    const mac = getMac();                   // Existing MAC lookup
+    const ip = socket.handshake.address;    // NEW: capture client IP
+
+    const ciphertext = encrypt(message);
+
+    // Emit unencrypted message to clients
+    io.emit("chatMessage", { user, msg: message });
+
+    // Create structured forensic log
+    const file = `./queue/inbox/msg_${Date.now()}.txt`;
+    const payload =
+        `USER=${user}\n` +
+        `MAC=${mac}\n` +
+        `IP=${ip}\n` +                      // NEW FIELD
+        `CIPHERTEXT=${ciphertext}\n` +
+        `IV=${IV.toString("hex")}\n`;
+
+    fs.writeFileSync(file, payload);
+
+    console.log("Encrypted message: message encrypted");
 });
 
-// Start server
-const PORT = 3000;
-server.listen(PORT, () => console.log(`🚀 WhereApp running at http://localhost:${PORT}`));
+
+
+    // --- USER DISCONNECTS ---
+    socket.on("disconnect", () => {
+        if (socket.username) {
+            activeUsers = activeUsers.filter(u => u !== socket.username);
+            io.emit("activeUsers", activeUsers);
+        }
+    });
+});
+
+// START SERVER
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () =>
+    console.log(`Server running on ${PORT}`)
+);
