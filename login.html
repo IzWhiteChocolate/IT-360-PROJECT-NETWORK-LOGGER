@@ -3,32 +3,158 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MSNGR — Login</title>
+  <title>WhereApp — Login</title>
+
   <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#f3f4f6; }
-    .card { background:white; padding:28px; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,.08); width:360px; text-align:center; }
-    .logo { width:96px; height:96px; margin:0 auto 8px; display:block; }
-    h1 { margin:4px 0 18px; font-size:20px; letter-spacing:0.4px; }
-    label{display:block; text-align:left; margin:10px 0 6px; font-size:13px; color:#333;}
-    input[type="text"], input[type="password"] { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e5e7eb; box-sizing:border-box; }
-    button { margin-top:16px; width:100%; padding:10px; border-radius:8px; border:0; background:#2563eb; color:white; font-weight:600; cursor:pointer; }
-    .small { font-size:13px; color:#6b7280; margin-top:10px; }
-    a { color:#2563eb; text-decoration:none; }
+    /* Basic document settings */
+    * { box-sizing: border-box; }
+
+    /* Space-themed background setup */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #0b0f2b, #020617 70%);
+      color: #e2e8f0;
+      overflow: hidden;
+    }
+
+    /* Moving star field background layer */
+    .stars {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: repeating-radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 2px);
+      background-size: 2px 2px;
+      animation: drift 120s linear infinite;
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    @keyframes drift {
+      from { background-position: 0 0; }
+      to { background-position: 2000px 2000px; }
+    }
+
+    /* Login card container */
+    main.card {
+      position: relative;
+      z-index: 1;
+      background: rgba(10, 15, 40, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 32px 28px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+      width: 380px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Logo styling */
+    .logo {
+      width: 110px;
+      margin: 0 auto 14px;
+      display: block;
+      filter: drop-shadow(0 0 8px #3b82f6);
+    }
+
+    /* Title text gradient */
+    h1 {
+      margin: 4px 0 20px;
+      font-size: 22px;
+      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Labels for input fields */
+    label {
+      display: block;
+      text-align: left;
+      margin: 10px 0 6px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    /* Input field styling */
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Sign-in button styling */
+    button {
+      margin-top: 18px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+    }
+
+    /* Small text under form */
+    .small {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 14px;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
-<body>
-  <main class="card" role="main" aria-labelledby="loginTitle">
-    <!-- Put your logo file in the same folder and name it logo.png (or edit the src below) -->
-    <img src="logo.png" alt="MSNGR logo" class="logo" onerror="this.style.display='none'">
-    <h1 id="loginTitle">Welcome to MSNGR</h1>
 
+<body>
+  <!-- Background star animation -->
+  <div class="stars"></div>
+
+  <!-- Login card -->
+  <main class="card" role="main" aria-labelledby="loginTitle">
+
+    <!-- App logo -->
+    <img src="logo.png" alt="WhereApp logo" class="logo">
+
+    <!-- Title -->
+    <h1 id="loginTitle">Welcome to WhereApp</h1>
+
+    <!-- Login form -->
+    <!-- onsubmit triggers JS to store username and redirect -->
     <form id="loginForm" action="Chat.html" method="get" onsubmit="return handleLogin(event)">
-      <label for="email">Email</label>
-      <input id="email" name="email" type="text" autocomplete="username" required>
+
+      <label for="Username">Username</label>
+      <!-- Username input -->
+      <input id="Username" name="Username" type="text" autocomplete="Username" required>
 
       <label for="password">Password</label>
+      <!-- Password input (not validated in backend — demo only) -->
       <input id="password" name="password" type="password" autocomplete="current-password" required>
 
+      <!-- Button submits the form -->
       <button type="submit">Sign in</button>
     </form>
 
@@ -36,20 +162,31 @@
   </main>
 
   <script>
-    // lightweight client-side check + demo redirect
+    /*
+      handleLogin():
+      - Prevents default form submission
+      - Saves username to sessionStorage
+      - Redirects user to chat page
+    */
     function handleLogin(e) {
       e.preventDefault();
-      const email = document.getElementById('email').value.trim();
+
+      const Username = document.getElementById('Username').value.trim();
       const pass = document.getElementById('password').value;
-      if (!email || !pass) {
-        alert('Please enter email and password.');
+
+      if (!Username || !pass) {
+        alert('Please enter Username and password.');
         return false;
       }
-      // quick demo: store user in sessionStorage and go to Chat.html
-      sessionStorage.setItem('msngr_user', email);
+
+      // Store username for chat page session
+      sessionStorage.setItem('msngr_user', Username);
+
+      // Navigate to chat page
       window.location.href = 'Chat.html';
       return false;
     }
   </script>
+
 </body>
 </html>
