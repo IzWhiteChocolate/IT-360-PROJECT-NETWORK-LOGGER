@@ -1,16 +1,17 @@
 {
-  "name": "it-360-project-network-logger",
+  "name": "html_for_keylogger",
   "version": "1.0.0",
-  "description": "In this repository, we will display our steps and progress throughout our project!",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "socket.io": "^4.8.1"
   }
 }
