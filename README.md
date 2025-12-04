@@ -3,7 +3,7 @@ Our tools name is called WhereApp and it is a messaging platform that doubles as
 The UI for the website was coded in HTML and the actual network logger was coded in bash. The messaging website displays active users, has a login feature, and contains typing bubbles when someone is chatting.
 
 INSTRUCTIONS FOR USING TOOL INCLUDED IN THE VIDEO.
-
+https://youtu.be/rXdAAfF3Jjc 
 
 
 
